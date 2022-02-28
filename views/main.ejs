@@ -1,0 +1,25 @@
+<%- include('header'); -%>
+
+<body>
+  <div class="container p-2 mt-5">
+    <div class="row">
+   
+      <% for (let i = 0; i< noteData.length; i++) { %>
+        
+        <div class="col-md-3 dflex justify-content-center col-sm-3">
+            <div class="card bg-light mb-3" style="width: 100%">
+              <div class="card-header"><%= noteData[i].date %></div>
+              <div class="card-body">
+                <h4 class="card-title"><%= noteData[i].author %></h4>
+                <p class="card-text">
+                    <%= noteData[i].author %>
+                </p>
+              </div>
+            </div>
+        </div>
+        
+      <% } %>
+    </div>
+  </div>
+</body>
+<%- include('footer') %>

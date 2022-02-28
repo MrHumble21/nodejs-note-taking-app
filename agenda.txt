@@ -1,0 +1,9 @@
+1 web tech  >>> create app  
+
+2 imob >>> write the report 
+
+3 c# >>> create an app that handles workers
+
+4 math >>> learn themes
+
+5 statistics >>> learn R language and  R studio
