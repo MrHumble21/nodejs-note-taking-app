@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 
 const data = require("./helper").data;
 
+
 const category = require("./helper").category;
 
 const { getBooks, setBooks } = require("./createAndDelete");
@@ -17,6 +18,8 @@ const { getBooks, setBooks } = require("./createAndDelete");
 const port = 3500;
 
 const db = "data.json";
+
+
 
 const empty = []
 
@@ -34,8 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   let data1 = getBooks(db);
   console.log(data1);
-
-  res.render("main", { noteData: data1, categories: category });
+  res.render("main", { noteData: getBooks(db), categories: category });
 });
 
 app.post("/", (req, res) => {
@@ -44,13 +46,15 @@ app.post("/", (req, res) => {
   let createdBy = req.body.author;
   let category = req.body.category;
   let noteBody = req.body.note;
-  let dataNoteNew = { dateCreated, createdBy, category, noteBody };
-  console.log(dataNoteNew)
-  const [...data] = getBooks(db);
-  data.push(dataNoteNew)
-  setBooks(db, [data])
-  res.render("Create", { categories: category });
+  let id = `${createdBy}${Math.random()*15}`
+  let dataNoteNew = { dateCreated, createdBy, category, noteBody, id  };
+  const notedata1 = getBooks(db)
+  notedata1.push(dataNoteNew)
+  console.log(notedata1)
+  setBooks(db, notedata1)
+  console.log(notedata1)
 
+  res.render("Create", { categories: category });
 
 });
 
@@ -71,3 +75,5 @@ app.get("/check", (req, res) => {
 app.listen(port, () => {
   console.log(`server is up and running on port ${port} 😊`);
 });
+
+

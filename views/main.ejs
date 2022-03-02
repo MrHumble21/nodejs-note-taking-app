@@ -8,13 +8,18 @@
         
         <div class="col-md-3 dflex justify-content-center col-sm-3">
             <div class="card bg-light mb-3" style="width: 100%">
-              <div class="card-header"><%= noteData[i].date %></div>
+              <div class="card-header"><%= noteData[i].dateCreated %></div>
               <div class="card-body">
-                <h4 class="card-title"><%= noteData[i].author %></h4>
+                <h4 class="card-title"><%= noteData[i].createdBy %></h4>
                 <p class="card-text">
-                    <%= noteData[i].author %>
+                    <%= noteData[i].category %>
+                    
                 </p>
+                <button  id="delete" type="button" data-id="<%= noteData[i].id %>" class="btn delete w-100 btn-outline-danger">Delete</button>
+
               </div>
+              
+              
             </div>
         </div>
         
