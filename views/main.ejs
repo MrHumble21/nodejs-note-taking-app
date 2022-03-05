@@ -3,26 +3,29 @@
 <body>
   <div class="container p-2 mt-5">
     <div class="row">
-   
+
       <% for (let i = 0; i< noteData.length; i++) { %>
-        
+
         <div class="col-md-3 dflex justify-content-center col-sm-3">
             <div class="card bg-light mb-3" style="width: 100%">
-              <div class="card-header"><%= noteData[i].dateCreated %></div>
+              <div class="card-header"><%= noteData[i].dateCreated %>  </div>
+                <div> <%= noteData.categories %></div>
               <div class="card-body">
                 <h4 class="card-title"><%= noteData[i].createdBy %></h4>
                 <p class="card-text">
-                    <%= noteData[i].category %>
-                    
-                </p>
-                <button  id="delete" type="button" data-id="<%= noteData[i].id %>" class="btn delete w-100 btn-outline-danger">Delete</button>
+                    <%= noteData[i].noteBody %>
 
+                </p>
+                  <hr class="dropdown-divider mb-3">
+                  <form action="/delete" method="post">
+                      <button  id="delete" name="delBtn" type="submit" value="<%= noteData[i]._id %>" class="btn p-2  btn-outline-danger">Delete</button>
+                  </form>
               </div>
-              
-              
+
+
             </div>
         </div>
-        
+
       <% } %>
     </div>
   </div>
