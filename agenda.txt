@@ -1,9 +1,46 @@
-1 web tech  >>> create app  
+   <h5 class="mb-1 ">Note It 📝</h5>
+              <br>
+              <br>
+              <small></small>
+            </div>
+            <p class="mb-1">
+              This web application has been created for Course work purposes. 
+              <br>
+              <br>
+              Student 🆔:  00012190
+              <br>
+              <br>
+              Student Name 🧑‍🎓: Abdulboriy Malikov 
+              <br>
+              <br>
+              Group 🔢: 4BIS1
+              <br>
+              <br>
 
-2 imob >>> write the report 
+            </p>
+            <small>
+              Thank you for using this application 👨‍💻
+            </small>
 
-3 c# >>> create an app that handles workers
 
-4 math >>> learn themes
 
-5 statistics >>> learn R language and  R studio
+
+
+
+
+
+
+
+
+
+            <strong class="me-auto">Note It 📝</strong>
+        <span> 🕧 </span>
+        <small><%= new Date().getHours()%></small>
+        <span> : </span>
+        <small><%= new Date().getMinutes()%></small>
+        <span> 📅 </span>
+        <small><%= new Date().getDate()%></small>
+        <span> / </span>
+        <small><%= new Date().getMonth()%></small>
+        <span> / </span>
+        <small> <%= new Date().getFullYear()%> </small>
