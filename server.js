@@ -17,19 +17,22 @@ const date = require("./helper").date;
 
 const { getBooks, setBooks } = require("./createAndDelete");
 const mongoose = require("mongoose");
-
-const port = 5000;
+const MONGODB_URI = `mongodb+srv://aaa153599:@mrhumble.dd71i.mongodb.net/NoteTakingAppDB`;
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/NoteTakingAppDB"
+);
 
 const db = "data.json";
 
 const empty = [];
+
+require("dotenv").config();
 
 // serving public files
 app.use(express.static("public"));
 
 // connecting databases
 
-mongoose.connect("mongodb://localhost:27017/NoteTakingAppDB");
 const noteSchema = {
   dateCreated: String,
   createdBy: String,
@@ -210,12 +213,11 @@ app.get("/Educational", (req, res) => {
 });
 
 app.post("/search", (req, res) => {
-  Note.find({ createdBy: req.body['search'] }, (err, foundNotes) => {
+  Note.find({ createdBy: req.body["search"] }, (err, foundNotes) => {
     console.log(foundNotes);
 
-    if(foundNotes.length === 0){
-      res.render('notfound', {noteData: foundNotes,
-        categories: category,})
+    if (foundNotes.length === 0) {
+      res.render("notfound", { noteData: foundNotes, categories: category });
     }
     res.render("main", {
       noteData: foundNotes,
@@ -238,6 +240,7 @@ app.get("/check", (req, res) => {
 });
 
 // starting server
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`server is up and running on port ${port} 😊`);
