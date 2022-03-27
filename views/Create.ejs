@@ -18,6 +18,7 @@
             class="form-control"
             placeholder="Default input"
             id="inputDefault"
+            required
           />
         </div>
 
@@ -29,6 +30,7 @@
               >
               <input
                 name="author"
+                required
                 type="text"
                 class="form-control"
                 placeholder="Enter your Name"
@@ -41,7 +43,7 @@
               <label for="exampleSelect1" class="form-label mt-4"
                 >Choose category</label
               >
-              <select name="category" class="form-select" id="exampleSelect1">
+              <select name="category" class="form-select" id="exampleSelect1" required >
                 <% for(let cat of categories){ %>
                 <option name="<%= cat %> " value="<%= cat %> ">
                   <%= cat %>
@@ -59,6 +61,7 @@
                 name="note"
                 class="form-control"
                 id="exampleTextarea"
+                required
                 rows="3"
               ></textarea>
             </div>
