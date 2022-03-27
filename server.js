@@ -17,9 +17,9 @@ const date = require("./helper").date;
 
 const { getBooks, setBooks } = require("./createAndDelete");
 const mongoose = require("mongoose");
-const MONGODB_URI = `mongodb+srv://aaa153599:@mrhumble.dd71i.mongodb.net/NoteTakingAppDB`;
+const MONGODB_URI = `mongodb+srv://Abdulboriy:zerotomastery@cluster0.mpywc.mongodb.net/NoteTakingAppDB`;
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/NoteTakingAppDB"
+MONGODB_URI || "mongodb://localhost:27017/NoteTakingAppDB"
 );
 
 const db = "data.json";
