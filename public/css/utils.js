@@ -1,8 +1,5 @@
-let deleteBtns =  document.querySelectorAll('.delete')
-
-deleteBtns.forEach(d=>{
-    d.addEventListener('click',(e)=>{
-        console.log(e.target.dataset.id)
-    })
-})
-
+function msg (){
+    setTimeout(function(){
+        document.getElementById("msg").classList.add("d-none");
+    }, 15000)
+}

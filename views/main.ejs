@@ -1,14 +1,64 @@
 <%- include('header'); -%>
 
-<body>
-  <div class="container p-2 mt-5">
-    <div class="row">
-      <% for (let i = 0; i< noteData.length; i++) { %>
+<body onload="msg()">
+  <div class="container p-2 mt-3">
+    <div
+      class="toast w-100 show"
+      id="msg"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto"><span class="badge bg-warning">Course WORK</span>  </strong>
+        <caption><span class="badge badge bg-info"><%= new Date().getDate()  %> /
+          <%= new Date().getMonth()  %> / 
+          <%= new Date().getFullYear()  %>
+        </span></caption>
+        <button
+          type="button"
+          class="btn-close ms-2 mb-1"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="toast-body">
+        This Application has been successfully created by The Student 
+        <span class="badge rounded-pill bg-primary">00012190</span>  of
+        Westminster International University in Tashkent for the sake of course
+        work.
+        <br>
+        <br>
+        All rights reserved ©️
+      </div>
+    </div>
+    <div class="mt-5 row">
+      <% if(noteData.length == 0){ %>
+
+      <div class="alert alert-dismissible alert-primary">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+        <strong>Oh snap!</strong>
+        <br> <hr>
+
+        You dont have any Notes! <br /><br />
+        <a href="/create" class="alert-link">
+          Please try to create A new Note.</a
+        >
+      </div>
+
+      <% } else { %> <% for (let i = 0; i< noteData.length; i++) { %>
 
       <div class="col-md-3 dflex justify-content-center col-sm-3">
         <div class="card bg-light mb-3" style="width: 100%">
           <div class="card-header" name="date">
-            <%= noteData[i].dateCreated %> <br> <span><%= noteData[i]['category']  %> </span>
+            <%= noteData[i].dateCreated %> <br />
+            <span><%= noteData[i]['category'] %> </span>
           </div>
           <div><%= noteData.categories %></div>
           <div class="card-body">
@@ -16,33 +66,31 @@
             <p class="card-text"><%= noteData[i].noteBody %></p>
             <hr class="dropdown-divider mb-3" />
             <div class="container-fluid d-flex justify-content-around">
-              <form action="/delete" method="post">
-                <button
-                  id="delete"
-                  name="delBtn"
-                  type="submit"
-                  value="<%= noteData[i]._id %>"
-                  class="btn p-2 btn-outline-danger"
-                >
-                  Delete
-                </button>
-              </form>
+              <a
+                id="delete"
+                name="delBtn"
+                type="submit"
+                href="/delete/<%= noteData[i]._id %>"
+                value="<%= noteData[i]._id %>"
+                class="btn p-2 btn-outline-danger"
+              >
+                Delete
+              </a>
 
-              <form class="form-check-inline" action="/edit" method="post">
-                <button
-                  type="submit"
-                  name='<%= noteData[i].createdBy %>'
-                  class="btn p-2 btn-outline-success"
-                >
-                  Edit 📝
-                </button>
-              </form>
+              <a
+                href="/edit/<%= noteData[i]._id %>"
+                type="submit"
+                name="<%= noteData[i].createdBy %>"
+                class="btn p-2 btn-outline-success"
+              >
+                Edit 📝
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <% } %>
+      <% } %> <% } %>
     </div>
   </div>
 </body>
